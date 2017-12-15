@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 12:24:48 by deremia           #+#    #+#             */
-/*   Updated: 2017/12/13 12:39:27 by deremia          ###   ########.fr       */
+/*   Created: 2017/12/15 12:26:49 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/15 12:26:55 by deremia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	size_t i;
-
-	i = 0;
-	if (n == 0)
+	if (!lst)
 		return ;
-	while (i < n)
-	{
-		((char*)s)[i] = '\0';
-		i++;
-	}
+	if (lst->next)
+		ft_lstiter(lst->next, f);
+	f(lst);
 }

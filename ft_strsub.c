@@ -1,21 +1,40 @@
-/*
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/13 12:37:07 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/13 15:01:58 by deremia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*dest;
-	size_t	i;
+	char	*p;
+	char	*ret;
+	char	*aux;
 
-	i = 0;
 	if (!s)
 		return (NULL);
-	dest = (char*)malloc((ft_strlen(str) + 1)*len);
-	while (s && start < len)
+	if (start > ft_strlen(s) || len > (ft_strlen(s) - start))
+		return (NULL);
+	p = ft_strnew((size_t)len);
+	if (!p)
+		return (NULL);
+	ret = p;
+	aux = (char*)s;
+	aux = aux + start;
+	while (*aux && len)
 	{
-		dest[i] = s[start++];
-		i++;
+		*p = *aux;
+		len--;
+		p++;
+		aux++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	*p = '\0';
+	return (ret);
 }
-*/

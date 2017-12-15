@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 12:24:48 by deremia           #+#    #+#             */
-/*   Updated: 2017/12/13 12:39:27 by deremia          ###   ########.fr       */
+/*   Created: 2017/12/15 12:27:16 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/15 12:27:18 by deremia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t i;
+	t_list		*new;
+	t_list		*list;
 
-	i = 0;
-	if (n == 0)
-		return ;
-	while (i < n)
+	if (!lst)
+		return (NULL);
+	list = f(lst);
+	new = list;
+	while (lst->next)
 	{
-		((char*)s)[i] = '\0';
-		i++;
+		lst = lst->next;
+		if (!(list->next = f(lst)))
+		{
+			free(list->next);
+			return (NULL);
+		}
+		list = list->next;
 	}
+	return (new);
 }

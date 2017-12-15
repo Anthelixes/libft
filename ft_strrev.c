@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 12:24:48 by deremia           #+#    #+#             */
-/*   Updated: 2017/12/13 12:39:27 by deremia          ###   ########.fr       */
+/*   Created: 2017/12/15 13:49:26 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/15 13:49:27 by deremia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_strrev(char *str)
 {
-	size_t i;
+	char		*s;
+	char		aux;
+	size_t		i;
+	size_t		len;
 
-	i = 0;
-	if (n == 0)
+	if (!str)
 		return ;
-	while (i < n)
+	i = 0;
+	len = ft_strlen(str);
+	len--;
+	s = str;
+	while (i < len)
 	{
-		((char*)s)[i] = '\0';
+		aux = s[i];
+		s[i] = s[len];
+		s[len] = aux;
 		i++;
+		len--;
 	}
 }

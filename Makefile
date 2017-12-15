@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: deremia <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/12/13 13:58:13 by deremia           #+#    #+#              #
+#    Updated: 2017/12/13 13:58:15 by deremia          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		= libft.a
 CFLAGS		= -Wall -Werror -Wextra -I. -c
 FILES		= ft_memset.c \
@@ -23,6 +35,7 @@ FILES		= ft_memset.c \
 				ft_isalpha.c \
 				ft_isdigit.c \
 				ft_isalnum.c \
+				ft_isascii.c \
 				ft_isprint.c \
 				ft_toupper.c \
 				ft_tolower.c \
@@ -48,6 +61,21 @@ FILES		= ft_memset.c \
 				ft_putstr.c \
 				ft_putendl.c \
 				ft_putnbr.c \
+				ft_putchar_fd.c \
+				ft_putstr_fd.c \
+				ft_putendl_fd.c \
+				ft_putnbr_fd.c \
+				ft_lstnew.c \
+				ft_lstdelone.c \
+				ft_lstdel.c \
+				ft_lstadd.c \
+				ft_lstiter.c \
+				ft_lstmap.c \
+				ft_sort.c \
+				ft_cautare.c \
+				ft_strrev.c \
+				ft_swap.c \
+				ft_vecnew.c \
 
 
 OBJ			= $(FILES:%.c=%.o)

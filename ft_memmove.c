@@ -1,43 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/13 12:28:04 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/13 12:28:05 by deremia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t i;
+	char	*d;
+	char	*s;
 
-	i = 0;
-	while (i<n)
+	d = (char*)dest;
+	s = (char*)src;
+	if (s < d)
 	{
-		((char*)dest)[i] = ((char*)src)[i];
-		i++;
+		while (n--)
+			d[n] = s[n];
 	}
-	((char*)dest)[i] = '\0';
-	return (dest);
+	else
+		ft_memcpy(d, s, n);
+	return (d);
 }
-
-/*
-void *ft_memmove(void *dest, const void *src, size_t n)
-{
-	char	*s1;
-	const char	*s2;
-	size_t	i;
-	size_t	len1;
-	size_t	len2;
-
-	i = 0;
-	len1 = ft_strlen(dest);
-	len2 = ft_strlen(src);
-	if (src == NULL || dest == NULL)
-		return (NULL);
-	if (len1 > len2)
-	{
-		while (i<n)
-		{
-			((char*)dest)[i] = ((char*)src)[i];
-			i++;
-		}
-	}
-	else if (len1 < len2)
-		ft_memcpy(dest, src, n);
-	return (dest);
-}
-*/

@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_vecnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 12:24:48 by deremia           #+#    #+#             */
-/*   Updated: 2017/12/13 12:39:27 by deremia          ###   ########.fr       */
+/*   Created: 2017/12/15 13:58:17 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/15 13:58:19 by deremia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int		*ft_vecnew(size_t n)
 {
-	size_t i;
+	int				*vec;
+	unsigned int	i;
 
+	vec = (int*)malloc(n);
 	i = 0;
-	if (n == 0)
-		return ;
+	if (!vec)
+		return (NULL);
 	while (i < n)
 	{
-		((char*)s)[i] = '\0';
+		vec[i] = 0;
 		i++;
 	}
+	return (vec);
 }

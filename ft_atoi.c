@@ -1,23 +1,48 @@
-//DA
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: deremia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/13 12:24:26 by deremia           #+#    #+#             */
+/*   Updated: 2017/12/13 14:54:29 by deremia          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+static void	init(int *i, int *num, int *sign, int *contor)
 {
-	size_t	number;
-	size_t	sign;
+	*i = 0;
+	*num = 0;
+	*sign = 1;
+	*contor = 1;
+}
 
-	number = 0;
-	sign = 1;
-	while (*str == ' ')
-		str++;
-	if (*str == '-')
+int			ft_atoi(const char *str)
+{
+	int		i;
+	int		num;
+	int		sign;
+	int		contor;
+
+	init(&i, &num, &sign, &contor);
+	while (*(str + i) == '\n' || *(str + i) == '\t' || *(str + i) == '\r' ||
+			*(str + i) == '\v' || *(str + i) == '\f' || *(str + i) == ' ' ||
+			*(str + i) == '0')
+		i++;
+	if (*(str + i) == '-')
 		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while ('0' <= *str && *str <= '9')
+	if (*(str + i) == '-' || *(str + i) == '+')
+		i++;
+	while (*(str + i) && *(str + i) >= '0' && *(str + i) <= '9' && contor++)
 	{
-		number = number * 10 + sign * (*str - '0');
-		str++;
+		num = num * 10 + sign * (*(str + i++) - '0');
 	}
-	return (number);
+	if (contor > 15 && sign == -1)
+		return (0);
+	else if (contor > 15 && sign == 1)
+		return (-1);
+	return (num);
 }
